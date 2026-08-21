@@ -65,7 +65,7 @@ namespace MCarBotBasic {
         sendI2cWriteCommand(101, 0, 0, 0, 0, 0, 0, 0);
         basic.pause(100);
         // Read
-        let buffer = receiveI2cData();
+        //let buffer = receiveI2cData();
     }
     //% block='Calibrate LF Sensors'
     //% group='Line Follower'
@@ -73,7 +73,7 @@ namespace MCarBotBasic {
         sendI2cWriteCommand(102, 0, 0, 0, 0, 0, 0, 0);
         basic.pause(100);
         // Read
-        let buffer2 = receiveI2cData();
+        //let buffer2 = receiveI2cData();
     }
     //% block = "Start Motors"
     //% group='Moves'
