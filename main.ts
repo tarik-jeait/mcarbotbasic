@@ -6,17 +6,18 @@ namespace MCarBotBasic {
         Forward = 0,
         Backward = 1
     }
-    //% block = "MCarbot Init"
-    //% group='General'
+    //% blockId=mcarbot_init
+    //% block="McarBot Init"
+    //% group="General"
     export function McarBotInit() {
         sendI2cWriteCommand(1, 1, 0, 0, 0, 0, 0, 0);
     }
-    //% block = "MCarbot Reset"
+    //% block='McarBot Reset'
     //% group='General'
     export function McarBotReset() {
         sendI2cWriteCommand(2, 1, 0, 0, 0, 0, 0, 0);
     }
-    //% block = "RGB Led Left r:$red g:$green b:$blue"
+    //% block='Left Led R:$red G:$green B:$blue'
     //% red.defl=255
     //% red.min=0 red.max=255
     //% green.defl=255
@@ -24,10 +25,29 @@ namespace MCarBotBasic {
     //% blue.defl=255
     //% blue.min=0 blue.max=255
     //% group='RGB LED'
-    export function RgbLeftLed(red: number, green: number, blue: number) {
+    export function LeftLed(red: number, green: number, blue: number) {
         sendI2cWriteCommand(11, 1, red, green, blue, 0, 0, 0);
     }
-    //% block = "RGB Led Right r:$red g:$green b:$blue"
+
+    //% block='RLed R:$rred G:$rgreen B:$rblue|LLed R:$lred G:$lgreen B:$lblue'
+    //% inlineInputMode=inline
+    //% rred.defl=255
+    //% rred.min=0 rred.max=255
+    //% rgreen.defl=255
+    //% rgreen.min=0 rgreen.max=255
+    //% rblue.defl=255
+    //% rblue.min=0 rblue.max=255
+    //% lred.defl=255
+    //% lred.min=0 lred.max=255
+    //% lgreen.defl=255
+    //% lgreen.min=0 lgreen.max=255
+    //% lblue.defl=255
+    //% lblue.min=0 lblue.max=255    
+    //% group='RGB LED'
+    export function BothLeds(rred: number, rgreen: number, rblue: number, lred: number, lgreen: number, lblue: number) {
+        sendI2cWriteCommand(13, 1, rred, rgreen, rblue, lred, lgreen, lblue);
+    }
+    //% block='Right Led R:$red G:$green B:$blue'
     //% red.defl=255
     //% red.min=0 red.max=255
     //% green.defl=255
@@ -35,9 +55,10 @@ namespace MCarBotBasic {
     //% blue.defl=255
     //% blue.min=0 blue.max=255
     //% group='RGB LED'
-    export function RgbRightLed(red: number, green: number, blue: number) {
+    export function Rightled(red: number, green: number, blue: number) {
         sendI2cWriteCommand(12, 1, red, green, blue, 0, 0, 0);
     }
+
     //% block = "Line Follower Sensors On"
     //% group='Line Follower'
     export function getSensors() {
