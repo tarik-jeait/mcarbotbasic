@@ -1,3 +1,5 @@
+//% color=190 weight=100 icon="\uf1ec" block="MCarBotBasic"
+//% groups=['General','RGB LED', 'Line Follower', 'Moves']
 namespace MCarBotBasic {
 
     export enum Dir {
@@ -121,4 +123,5 @@ namespace MCarBotBasic {
         let receivedBuffer = pins.i2cReadBuffer(getRpAddress(), 8, false);
         return receivedBuffer;
     }
+
 }
