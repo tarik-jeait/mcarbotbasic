@@ -59,11 +59,19 @@ namespace MCarBotBasic {
         sendI2cWriteCommand(12, 1, red, green, blue, 0, 0, 0);
     }
 
-    //% block = "Line Follower Sensors On"
+    //% block='Get LF Sensors'
     //% group='Line Follower'
     export function getSensors() {
         sendI2cWriteCommand(101, 0, 0, 0, 0, 0, 0, 0);
         // Read
+        let buffer = receiveI2cData();
+    }
+    //% block='Calibrate LF Sensors'
+    //% group='Line Follower'
+    export function calibrateSensors() {
+        sendI2cWriteCommand(102, 0, 0, 0, 0, 0, 0, 0);
+        // Read
+        let buffer = receiveI2cData();
     }
     //% block = "Start Motors"
     //% group='Moves'
@@ -107,5 +115,10 @@ namespace MCarBotBasic {
         writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 6, arg5);
         writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 7, arg6);
         pins.i2cWriteBuffer(getRpAddress(), writeCommandBuffer, false);
+    }
+
+    function receiveI2cData() {
+        let receivedBuffer = pins.i2cReadBuffer(getRpAddress(), 32, false);
+        return receivedBuffer;
     }
 }
