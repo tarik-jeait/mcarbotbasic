@@ -1,5 +1,3 @@
-//% color=190 weight=100 icon="\uf1ec" block="MCarBotBasic"
-//% groups=['General','RGB LED', 'Line Follower', 'Moves']
 namespace MCarBotBasic {
 
     export enum Dir {
@@ -63,6 +61,7 @@ namespace MCarBotBasic {
     //% group='Line Follower'
     export function getSensors() {
         sendI2cWriteCommand(101, 0, 0, 0, 0, 0, 0, 0);
+        basic.pause(100);
         // Read
         let buffer = receiveI2cData();
     }
@@ -70,8 +69,9 @@ namespace MCarBotBasic {
     //% group='Line Follower'
     export function calibrateSensors() {
         sendI2cWriteCommand(102, 0, 0, 0, 0, 0, 0, 0);
+        basic.pause(100);
         // Read
-        let buffer = receiveI2cData();
+        let buffer2 = receiveI2cData();
     }
     //% block = "Start Motors"
     //% group='Moves'
