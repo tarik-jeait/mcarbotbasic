@@ -118,7 +118,7 @@ namespace MCarBotBasic {
     }
 
     function receiveI2cData() {
-        let receivedBuffer = pins.i2cReadBuffer(getRpAddress(), 32, false);
+        let receivedBuffer = pins.i2cReadBuffer(getRpAddress(), 8, false);
         return receivedBuffer;
     }
 }
