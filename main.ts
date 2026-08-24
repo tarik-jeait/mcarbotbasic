@@ -37,7 +37,7 @@ namespace MCarBotBasic {
     //% group='RGB LED'
     export function setLed(led: Led, red: number, green: number, blue: number) {
         i2cWriteCommand(10, led as number, red, green, blue, 0, 0, 0);
-        // basic.pause(50);
+        basic.pause(50);
         let i2cReadBuffer = i2cReadCommand();
         return i2cReadBuffer[2];
     }
@@ -45,14 +45,14 @@ namespace MCarBotBasic {
     //% group='Line Follower'
     export function calibrateLfSensors() {
         i2cWriteCommand(30, 1, 0, 0, 0, 0, 0, 0);
-        i2cReadCommand();
+        // i2cReadCommand();
     }
     //% block="Read LF Sensors"
     //% group='Line Follower'
     export function readLfSensors() {
         i2cWriteCommand(30, 2, 0, 0, 0, 0, 0, 0);
-        let i2cReadBuffer = i2cReadCommand();
-        return i2cReadBuffer[2];
+        // let i2cReadBuffer = i2cReadCommand();
+        // return i2cReadBuffer[2];
     }
     //% block='Set Motor:$motor Dir:$dir Speed:$speed'
     //% speed.defl=100
