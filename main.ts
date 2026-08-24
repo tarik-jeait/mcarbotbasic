@@ -37,8 +37,8 @@ namespace MCarBotBasic {
     //% group='RGB LED'
     export function setLed(led: Led, red: number, green: number, blue: number) {
         i2cWriteCommand(10, led as number, red, green, blue, 0, 0, 0);
-        let i2cReadBuffer = i2cReadCommand();
-        return i2cReadBuffer[2];
+        // let i2cReadBuffer = i2cReadCommand();
+        // return i2cReadBuffer[2];        
     }
     //% block="Calibrate LF Sensors"
     //% group='Line Follower'
