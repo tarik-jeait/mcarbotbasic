@@ -26,6 +26,8 @@ namespace MCarBotBasic {
     export function McarBotReset() {
         // i2cWriteCommand(1, 2, 0, 0, 0, 0, 0, 0);
         pins.digitalWritePin(DigitalPin.P0, 0)
+        basic.pause(100)
+        pins.digitalWritePin(DigitalPin.P0, 1)
 
     }
     //% block='LED:$led R:$red G:$green B:$blue'
