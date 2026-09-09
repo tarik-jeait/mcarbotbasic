@@ -1,5 +1,3 @@
-//% color=190 weight=100 icon="\uf1ec" block="MCarBotBasic"
-//% groups=['General','RGB LED', 'Line Follower', 'Moves']
 namespace MCarBotBasic {
     export enum Dir {
         Forward = 1,
@@ -48,14 +46,14 @@ namespace MCarBotBasic {
     //% group='Line Follower'
     export function calibrateLfSensors() {
         i2cWriteCommand(30, 1, 0, 0, 0, 0, 0, 0);
-        let i2cReadBuffer = i2cReadCommand();
+        let i2cReadBuffer2 = i2cReadCommand();
         // i2cReadCommand();
     }
     //% block="Read LF Sensors"
     //% group='Line Follower'
     export function readLfSensors() {
         i2cWriteCommand(30, 2, 0, 0, 0, 0, 0, 0);
-        let i2cReadBuffer = i2cReadCommand();
+        let i2cReadBuffer3 = i2cReadCommand();
         // return i2cReadBuffer[2];
     }
     //% block='Set Motor:$motor Dir:$dir Speed:$speed'
