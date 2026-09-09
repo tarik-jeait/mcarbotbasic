@@ -24,7 +24,9 @@ namespace MCarBotBasic {
     //% block='McarBot Reset'
     //% group='General'
     export function McarBotReset() {
-        i2cWriteCommand(1, 2, 0, 0, 0, 0, 0, 0);
+        // i2cWriteCommand(1, 2, 0, 0, 0, 0, 0, 0);
+        pins.digitalWritePin(DigitalPin.P0, 0)
+
     }
     //% block='LED:$led R:$red G:$green B:$blue'
     //% inlineInputMode=inline
@@ -38,19 +40,20 @@ namespace MCarBotBasic {
     export function setLed(led: Led, red: number, green: number, blue: number) {
         i2cWriteCommand(10, led as number, red, green, blue, 0, 0, 0);
         let i2cReadBuffer = i2cReadCommand();
-        return i2cReadBuffer.getNumber(NumberFormat.UInt8LE, 2);
+        // return i2cReadBuffer.getNumber(NumberFormat.UInt8LE, 2);
     }
     //% block="Calibrate LF Sensors"
     //% group='Line Follower'
     export function calibrateLfSensors() {
         i2cWriteCommand(30, 1, 0, 0, 0, 0, 0, 0);
+        let i2cReadBuffer = i2cReadCommand();
         // i2cReadCommand();
     }
     //% block="Read LF Sensors"
     //% group='Line Follower'
     export function readLfSensors() {
         i2cWriteCommand(30, 2, 0, 0, 0, 0, 0, 0);
-        // let i2cReadBuffer = i2cReadCommand();
+        let i2cReadBuffer = i2cReadCommand();
         // return i2cReadBuffer[2];
     }
     //% block='Set Motor:$motor Dir:$dir Speed:$speed'
