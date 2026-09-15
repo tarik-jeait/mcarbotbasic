@@ -14,6 +14,7 @@ namespace MCarBotBasic {
         Left = 2,
         All = 3
     };
+
     //% blockId=mcarbot_init
     //% block="McarBot Init"
     //% group="General"
@@ -84,6 +85,36 @@ namespace MCarBotBasic {
     export function StopMotors() {
         i2cWriteCommand(20, 4, 0, 0, 0, 0, 0, 0);
         let i2cReadBuffer_motors_stop = i2cReadCommand();
+    }
+    //% block='Set Left Wheel Speed:$leftSpeed Right Wheel Speed:$rightSpeed'
+    //% leftSpeed.defl=100
+    //% leftSpeed.min=-100 leftSpeed.max=100
+    //% rightSpeed.defl=100
+    //% rightSpeed.min=-100 rightSpeed.max=100    
+    //% group='Moves'
+    export function setSpeed(leftSpeed: number, rightSpeed: number): void {
+        let left_direction = Dir.Forward
+        let right_direction = Dir.Forward
+
+        let left_speed = 0
+        let right_speed = 0
+
+        if (leftSpeed >= 0) {
+            left_direction = Dir.Forward
+            left_speed = leftSpeed
+        } else {
+            left_direction = Dir.Backward
+            left_speed = leftSpeed * -1
+        }
+        if (rightSpeed >= 0) {
+            right_direction = Dir.Forward
+            right_speed = rightSpeed
+        } else {
+            right_direction = Dir.Backward
+            right_speed = rightSpeed * -1
+        }
+        i2cWriteCommand(20, 5, left_speed, left_direction as number, right_direction, right_direction as number, 0, 0);
+        let i2cReadBuffer_speed_start = i2cReadCommand();
     }
     // note that Caml casing yields lower case
     // block text with spaces
