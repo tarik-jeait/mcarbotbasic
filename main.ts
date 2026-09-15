@@ -77,11 +77,13 @@ namespace MCarBotBasic {
     //% group='Moves'
     export function setMotor(motor: Motor, dir: Dir, speed: number): void {
         i2cWriteCommand(20, motor as number, speed, dir as number, 0, 0, 0, 0);
+        let i2cReadBuffer_motors_start = i2cReadCommand();
     }
     //% block = "Stop Motors"
     //% group='Moves'
     export function StopMotors() {
-        i2cWriteCommand(20, 2, 0, 0, 0, 0, 0, 0);
+        i2cWriteCommand(20, 4, 0, 0, 0, 0, 0, 0);
+        let i2cReadBuffer_motors_stop = i2cReadCommand();
     }
     // note that Caml casing yields lower case
     // block text with spaces
