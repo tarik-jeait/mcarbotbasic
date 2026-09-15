@@ -1,6 +1,4 @@
 namespace MCarBotBasic {
-    let LF_Sensor_Left = 0.0;
-    let LF_Sensor_Right = 0.0;
 
     export enum Dir {
         Forward = 1,
@@ -44,6 +42,18 @@ namespace MCarBotBasic {
         i2cWriteCommand(10, led as number, red, green, blue, 0, 0, 0);
         let i2cReadBuffer = i2cReadCommand();
         // return i2cReadBuffer.getNumber(NumberFormat.UInt8LE, 2);
+    }
+    let LF_Sensor_Left = 0;
+    let LF_Sensor_Right = 0;
+    //% block="LF Left"
+    //% group='Line Follower'
+    export function getLfLeft() {
+        return LF_Sensor_Left
+    }
+    //% block="LF Right"
+    //% group='Line Follower'
+    export function getLfRight() {
+        return LF_Sensor_Right
     }
     //% block="Calibrate LF Sensors"
     //% group='Line Follower'
