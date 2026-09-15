@@ -1,4 +1,7 @@
 namespace MCarBotBasic {
+    let LF_Sensor_Left = 0.0;
+    let LF_Sensor_Right = 0.0;
+
     export enum Dir {
         Forward = 1,
         Backward = 2
@@ -53,7 +56,9 @@ namespace MCarBotBasic {
     //% group='Line Follower'
     export function readLfSensors() {
         i2cWriteCommand(30, 2, 0, 0, 0, 0, 0, 0);
-        let i2cReadBuffer3 = i2cReadCommand();
+        let i2cReadBuffer_sensors = i2cReadCommand();
+        LF_Sensor_Left = i2cReadBuffer_sensors.getNumber(NumberFormat.UInt8LE, 2);
+        LF_Sensor_Right = i2cReadBuffer_sensors.getNumber(NumberFormat.UInt8LE, 3);
         // return i2cReadBuffer[2];
     }
     //% block='Set Motor:$motor Dir:$dir Speed:$speed'
@@ -90,3 +95,4 @@ namespace MCarBotBasic {
         return pins.i2cReadBuffer(getRpAddress(), 8, false);
     }
 }
+
