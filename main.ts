@@ -113,7 +113,7 @@ namespace MCarBotBasic {
             right_direction = Dir.Backward
             right_speed = rightSpeed * -1
         }
-        i2cWriteCommand(20, 5, left_speed, left_direction as number, right_direction, right_direction as number, 0, 0);
+        i2cWriteCommand(20, 5, left_speed, left_direction as number, right_speed, right_direction as number, 0, 0);
         let i2cReadBuffer_speed_start = i2cReadCommand();
     }
     // note that Caml casing yields lower case
