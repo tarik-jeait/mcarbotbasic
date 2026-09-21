@@ -68,8 +68,8 @@ namespace MCarBotBasic {
     export function readLfSensors() {
         i2cWriteCommand(30, 2, 0, 0, 0, 0, 0, 0);
         let i2cReadBuffer_sensors = i2cReadCommand();
-        LF_Sensor_Left = i2cReadBuffer_sensors.getNumber(NumberFormat.UInt8LE, 2);
-        LF_Sensor_Right = i2cReadBuffer_sensors.getNumber(NumberFormat.UInt8LE, 3);
+        LF_Sensor_Left = i2cReadBuffer_sensors.getNumber(NumberFormat.UInt8LE, 0);
+        LF_Sensor_Right = i2cReadBuffer_sensors.getNumber(NumberFormat.UInt8LE, 1);
         // return i2cReadBuffer[2];
     }
     //% block='Set Motor:$motor Dir:$dir Speed:$speed'
@@ -135,6 +135,6 @@ namespace MCarBotBasic {
         pins.i2cWriteBuffer(getRpAddress(), writeCommandBuffer, false);
     }
     function i2cReadCommand() {
-        return pins.i2cReadBuffer(getRpAddress(), 4, false);
+        return pins.i2cReadBuffer(getRpAddress(), 2, false);
     }
 }
