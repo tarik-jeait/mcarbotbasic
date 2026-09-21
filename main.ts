@@ -123,15 +123,15 @@ namespace MCarBotBasic {
         return rp_address;
     }
     function i2cWriteCommand(commandId: number, subCommandId: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number, arg6: number) {
-        let writeCommandBuffer = pins.createBuffer(8);
+        let writeCommandBuffer = pins.createBuffer(6);
         writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 0, commandId);
         writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 1, subCommandId);
         writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 2, arg1);
         writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 3, arg2);
         writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 4, arg3);
         writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 5, arg4);
-        writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 6, arg5);
-        writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 7, arg6);
+        //writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 6, arg5);
+        //writeCommandBuffer.setNumber(NumberFormat.UInt8LE, 7, arg6);
         pins.i2cWriteBuffer(getRpAddress(), writeCommandBuffer, false);
     }
     function i2cReadCommand() {
