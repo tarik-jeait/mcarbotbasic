@@ -41,7 +41,7 @@ namespace MCarBotBasic {
     //% group='RGB LED'
     export function setLed(led: Led, red: number, green: number, blue: number) {
         i2cWriteCommand(10, led as number, red, green, blue, 0, 0, 0);
-        let i2cReadBuffer = i2cReadCommand();
+        // let i2cReadBuffer = i2cReadCommand();
         // return i2cReadBuffer.getNumber(NumberFormat.UInt8LE, 2);
     }
     let LF_Sensor_Left = 0;
@@ -78,13 +78,13 @@ namespace MCarBotBasic {
     //% group='Moves'
     export function setMotor(motor: Motor, dir: Dir, speed: number): void {
         i2cWriteCommand(20, motor as number, speed, dir as number, 0, 0, 0, 0);
-        let i2cReadBuffer_motors_start = i2cReadCommand();
+        // let i2cReadBuffer_motors_start = i2cReadCommand();
     }
     //% block = "Stop Motors"
     //% group='Moves'
     export function StopMotors() {
         i2cWriteCommand(20, 4, 0, 0, 0, 0, 0, 0);
-        let i2cReadBuffer_motors_stop = i2cReadCommand();
+        //let i2cReadBuffer_motors_stop = i2cReadCommand();
     }
     //% block='Set Left Wheel Speed:$leftSpeed Right Wheel Speed:$rightSpeed'
     //% leftSpeed.defl=100
@@ -114,7 +114,7 @@ namespace MCarBotBasic {
             right_speed = rightSpeed * -1
         }
         i2cWriteCommand(20, 5, left_speed, left_direction as number, right_speed, right_direction as number, 0, 0);
-        let i2cReadBuffer_speed_start = i2cReadCommand();
+        //let i2cReadBuffer_speed_start = i2cReadCommand();
     }
     // note that Caml casing yields lower case
     // block text with spaces
@@ -135,7 +135,6 @@ namespace MCarBotBasic {
         pins.i2cWriteBuffer(getRpAddress(), writeCommandBuffer, false);
     }
     function i2cReadCommand() {
-        return pins.i2cReadBuffer(getRpAddress(), 8, false);
+        return pins.i2cReadBuffer(getRpAddress(), 4, false);
     }
 }
-
